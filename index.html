@@ -2,85 +2,87 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Passko</title>
+  <title>Untitled</title>
   <link rel="stylesheet" href="./style.css">
 
 </head>
 <body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Passko - Password Strength Checker</title>
+
+  <link rel="stylesheet" href="./style.css">
+
+</head>
 
 <body>
 
-    <nav>
+  <section id="home" class="section">
 
-        <ul>
+    <h1>Check the Strength of Your Password</h1>
 
-            <li><a href="#home">Home</a></li>
+    <p>Enter a password and test its strength to ensure your accounts are secure.</p>
 
-            <li><a href="#about">About</a></li>
+    <input type="password" id="password" placeholder="Enter your password" />
 
-            <li><a href="#contact">Contact</a></li>
+    <div id="strength-meter">
 
-        </ul>
+      <div id="strengthbar"></div>
 
-    </nav>
+    </div>
 
-    <section id="home" class="section">
+    <div id="feedback-box">
 
-        <h1>Welcome to the Password Strength Checker</h1>
+      <p id="feedback"></p>
 
-        <p>Test the strength of your passwords to ensure your accounts are secure.</p>
+    </div>
 
-        <input type="password" id="password" placeholder="Enter your password" />
+    <button id="checkstrength">Check Strength</button>
 
-        <div id="strength-meter">
+  </section>
 
-            <div id="strengthbar"></div>
+  <section id="about" class="section">
 
-        </div>
+    <h1>About This Tool</h1>
 
-        <div id="feedback-box">
+    <p>This tool helps you create strong and secure passwords by evaluating their complexity.</p>
 
-            <p id="feedback"></p>
+  </section>
 
-        </div>
+  <section id="contact" class="section">
 
-        <button id="checkstrength">Check Strength</button>
+    <h1>Contact Us</h1>
 
-    </section>
+    <p>If you have any questions or suggestions, feel free to reach out.</p>
 
-    <section id="about" class="section">
+    <form>
 
-        <h1>About This Tool</h1>
+      <input type="text" placeholder="Your Name" required>
 
-        <p>This tool helps you create strong and secure passwords by evaluating their complexity. 
+      <input type="email" placeholder="Your Email" required>
 
-        A strong password is essential for protecting your personal information.</p>
+      <textarea placeholder="Your Message" rows="5" required></textarea>
 
-    </section>
+      <button type="submit">Send Message</button>
 
-    <section id="contact" class="section">
+    </form>
 
-        <h1>Contact Us</h1>
+  </section>
 
-        <p>If you have any questions or suggestions, feel free to reach out.</p>
-
-        <form>
-
-            <input type="text" placeholder="Your Name" required>
-
-            <input type="email" placeholder="Your Email" required>
-
-            <textarea placeholder="Your Message" rows="5" required></textarea>
-
-            <button type="submit">Send Message</button>
-
-        </form>
-
-    </section>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 
 </body>
 
 </html>
+<!-- partial -->
+  <script  src="./script.js"></script>
 
+</body>
+</html>

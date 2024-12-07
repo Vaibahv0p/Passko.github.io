@@ -1,161 +1,65 @@
-document.getElementById('checkstrength').addEventListener('click', function() {
+document.getElementById('checkstrength').addEventListener('click', function () {
 
-    const password = document.getElementById('password').value;
+  const password = document.getElementById('password').value;
 
-    const strengthBar = document.getElementById('strengthbar');
+  const strength = checkPasswordStrength(password);
 
-    
+  updateStrengthMeter(strength);
 
-    const strength = checkPasswordStrength(password);
-
-    updateStrengthMeter(strength);
-
-    updateFeedback(strength);
+  updateFeedback(strength);
 
 });
 
 function checkPasswordStrength(password) {
 
-    let strength = 0;
+  let strength = 0;
 
-    // Length check (at least 8 characters)
+  if (password.length >= 8) strength++;
 
-    if (password.length >= 8) strength += 1;
+  if (/[A-Z]/.test(password)) strength++;
 
-    // Uppercase letter check
+  if (/[a-z]/.test(password)) strength++;
 
-    if (/[A-Z]/.test(password)) strength += 1;
+  if (/\d/.test(password)) strength++;
 
-    // Lowercase letter check
+  if (/[^A-Za-z0-9]/.test(password)) strength++;
 
-    if (/[a-z]/.test(password)) strength += 1;
-
-    // Number check
-
-    if (/\d/.test(password)) strength += 1;
-
-    // Special character check
-
-    if (/[^A-Za-z0-9]/.test(password)) strength += 1;
-
-    return strength;
+  return strength;
 
 }
 
 function updateStrengthMeter(strength) {
 
-    const strengthBar = document.getElementById('strengthbar');
+  const strengthBar = document.getElementById('strengthbar');
 
-    
+  const colors = ['red', 'orange', 'yellow', '#9ACD32', 'green'];
 
-    switch (strength) {
+  strengthBar.style.width = `${strength * 20}%`;
 
-        case 1:
-
-            strengthBar.style.width = '20%';
-
-            strengthBar.style.backgroundColor = 'red';
-
-            break;
-
-        case 2:
-
-            strengthBar.style.width = '40%';
-
-            strengthBar.style.backgroundColor = 'orange';
-
-            break;
-
-        case 3:
-
-            strengthBar.style.width = '60%';
-
-            strengthBar.style.backgroundColor = 'yellow';
-
-            break;
-
-        case 4:
-
-            strengthBar.style.width = '80%';
-
-            strengthBar.style.backgroundColor = '#9ACD32'; // YellowGreen
-
-            break;
-
-        case 5:
-
-            strengthBar.style.width = '100%';
-
-            strengthBar.style.backgroundColor = 'green';
-
-            break;
-
-        default:
-
-            strengthBar.style.width = '0';
-
-            break;
-
-    }
+  strengthBar.style.backgroundColor = colors[strength - 1] || 'transparent';
 
 }
 
 function updateFeedback(strength) {
 
-    const feedback = document.getElementById('feedback');
+  const feedback = document.getElementById('feedback');
 
-    
+  const messages = [
 
-    switch (strength) {
+    'Too weak!',
 
-        case 0:
+    'Very weak!',
 
-            feedback.textContent = 'Password is too weak.';
+    'Weak!',
 
-            feedback.style.color = 'red';
+    'Fair!',
 
-            break;
+    'Strong!',
 
-        case 1:
+    'Very strong!',
 
-            feedback.textContent = 'Very weak. Add more characters.';
+  ];
 
-            feedback.style.color = 'red';
-
-            break;
-
-        case 2:
-
-            feedback.textContent = 'Weak. Add a mix of uppercase and numbers.';
-
-            feedback.style.color = 'orange';
-
-            break;
-
-        case 3:
-
-            feedback.textContent = 'Fair. Add special characters for better strength.';
-
-            feedback.style.color = 'yellow';
-
-            break;
-
-        case 4:
-
-            feedback.textContent = 'Strong. You\'re almost there!';
-
-            feedback.style.color = '#9ACD32'; // YellowGreen
-
-            break;
-
-        case 5:
-
-            feedback.textContent = 'Very strong! Great job!';
-
-            feedback.style.color = 'green';
-
-            break;
-
-    }
+  feedback.textContent = messages[strength] || '';
 
 }
